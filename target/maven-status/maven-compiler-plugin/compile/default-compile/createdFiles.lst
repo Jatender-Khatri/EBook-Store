@@ -1,5 +1,5 @@
-com\servlet\RegisterServlet.class
 com\dao\UserDao.class
-com\daoImpl\UserDaoImpl.class
 com\model\User.class
 com\connection\DBConnection.class
+com\servlet\RegisterServlet.class
+com\daoImpl\UserDaoImpl.class

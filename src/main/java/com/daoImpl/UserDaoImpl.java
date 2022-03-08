@@ -8,6 +8,7 @@ import com.dao.UserDao;
 import com.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -40,6 +41,34 @@ public class UserDaoImpl implements UserDao {
             System.out.println("Error : " + e.getMessage());
         }
         return f;
+    }
+
+    @Override
+    public User loginUser(String arg0, String arg1) {
+        User u = new User();
+        try {
+            String login = "select * from user where email = ? and password = ?";
+            PreparedStatement ps = con.prepareStatement(login);
+            ps.setString(1, arg0);
+            ps.setString(2, arg1);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                u.setCity(set.getString("city"));
+                u.setEmail(set.getString("email"));
+                u.setLandmark(set.getString("landmark"));
+                u.setName(set.getString("name"));
+                u.setPassword(set.getString("password"));
+                u.setPhoneNumber(set.getString("phoneNumber"));
+                u.setState(set.getString("state"));
+                u.setUserId(set.getInt("id"));
+                u.setZipCode(set.getString("zip"));
+                u.setAddress(set.getString("address"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
+        }
+        return u;
     }
 
 }

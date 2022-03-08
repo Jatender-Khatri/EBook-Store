@@ -3,6 +3,8 @@
     Created on : Feb 28, 2022, 10:42:16 PM
     Author     : MeGa
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,6 +21,14 @@
                 <div class="col-md-4 offset-md-4">
                     <div class="card">
                         <div class="card-body">
+                            <c:if test="${not empty failedMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-danger" role="alert">
+                                        ${failedMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="failedMsg" />
+                            </c:if>
                             <div class="text-center">
                                 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
                                 <h5>Login Here</h5>
@@ -34,7 +44,7 @@
                                     <input type="password" name="password" required class="form-control" >
                                 </div>
                                 <button type="submit" class="btn btn-primary badge-pill btn-block">Login</button>
-                                
+
                             </form>
                         </div>
                     </div>
