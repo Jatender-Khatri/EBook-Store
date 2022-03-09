@@ -4,12 +4,19 @@
  */
 package com.admin.servlet;
 
+import com.connection.DBConnection;
+import com.dao.BookDao;
+import com.daoImpl.BookDaoImpl;
+import com.model.Books;
+import java.io.File;
 import java.io.IOException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 /**
@@ -17,6 +24,7 @@ import javax.servlet.http.Part;
  * @author MeGa
  */
 @WebServlet("/add_book")
+@MultipartConfig
 public class BooksAdd extends HttpServlet {
 
     /**
@@ -37,14 +45,24 @@ public class BooksAdd extends HttpServlet {
             String category = request.getParameter("bCategory");
             String status = request.getParameter("bStatus");
             Part part = request.getPart("bImage");
-//            String fileName = part.getSubmittedFileName();
-            
-            System.out.println("Book Name : " + bookName);
-            System.out.println("Author : " + author);
-            System.out.println("Price : " + price);
-            System.out.println("Category : " + category);
-            System.out.println("Status : " + status);
-//            System.out.println("Image Path : " + fileName);
+            String fileName = part.getSubmittedFileName();
+
+            Books book = new Books(bookName, author, price, category, status, fileName, "Admin");
+
+            BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
+
+            HttpSession session = request.getSession();
+            boolean f = bookDao.insertBook(book);
+            if (f) {
+                String path = getServletContext().getRealPath("") + "book";
+                File file = new File(path);
+                part.write(path + File.separator + fileName);
+                session.setAttribute("succMsg", "Book added Successfully");
+                response.sendRedirect("admin/add_books.jsp");
+            } else {
+                session.setAttribute("failedMsg", "Something went wrong");
+                response.sendRedirect("admin/add_books.jsp");
+            }
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error : " + e.getMessage());

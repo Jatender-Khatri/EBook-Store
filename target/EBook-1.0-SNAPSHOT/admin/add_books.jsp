@@ -24,6 +24,22 @@
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
                         <div class="card-body">
+                            <c:if test="${not empty succMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-success" role="alert">
+                                        ${succMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="succMsg" />
+                            </c:if>
+                            <c:if test="${not empty failedMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-danger" role="alert">
+                                        ${failedMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="failedMsg" />
+                            </c:if>
                             <h3 class="text-center">Add Books</h3>
                             <form action="../add_book" method="post" enctype="multipart/form-data">
                                 <div class="form-group">

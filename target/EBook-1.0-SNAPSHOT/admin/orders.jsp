@@ -18,8 +18,11 @@
         <c:if test="${empty userobj}">
             <c:redirect url="../login.jsp" />
         </c:if>
-        <h3 class="text-center">Hello, Admin</h3>
-        <table class="table table-striped">
+        <div class="text-center">
+            <h3>Hello, Admin</h3>
+            <a href="Home.jsp" class="btn btn-sm btn-primary" style="width: 130px; height: 35px;"><i class="fa-solid fa-arrow-left"></i> Home Page</a>
+        </div>
+        <table class="table table-striped mt-3">
             <thead class="bg-primary text-white">
                 <tr>
                     <th scope="col">Order Id</th>

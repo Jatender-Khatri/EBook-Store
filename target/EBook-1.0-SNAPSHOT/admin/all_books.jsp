@@ -3,6 +3,11 @@
     Created on : Mar 9, 2022, 12:14:49 AM
     Author     : MeGa
 --%>
+<%@page import="com.model.Books"%>
+<%@page import="java.util.List"%>
+<%@page import="com.connection.DBConnection"%>
+<%@page import="com.daoImpl.BookDaoImpl"%>
+<%@page import="com.dao.BookDao"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,11 +23,16 @@
         <c:if test="${empty userobj}">
             <c:redirect url="../login.jsp" />
         </c:if>
-        <h3 class="text-center">Hello, Admin</h3>
-        <table class="table table-striped">
+        <div class="text-center">
+            <h3>Hello, Admin</h3>
+            <a href="Home.jsp" class="btn btn-sm btn-primary" style="width: 130px; height: 35px;"><i class="fa-solid fa-arrow-left"></i> Home Page</a>
+        </div>
+
+        <table class="table table-striped mt-3">
             <thead class="bg-primary text-white">
                 <tr>
-                    <th scope="col">Id</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Image</th>
                     <th scope="col">Book Name</th>
                     <th scope="col">Author</th>
                     <th scope="col">Price</th>
@@ -32,42 +42,28 @@
                 </tr>
             </thead>
             <tbody>
+                <%
+                    BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
+                    List<Books> book = bookDao.getAllBooks();
+
+                    for (Books books : book) {
+                %>
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
+                    <td><%= books.getBookId()%></td>
+                    <td><img src="../book/<%= books.getPhotoName()%>" style="width: 50px; height: 50px;" /></td>
+                    <td><%= books.getBookName()%></td>
+                    <td>@<%= books.getAuthor()%></td>
+                    <td>&#8360;. <%= books.getPrice()%></td>
+                    <td><%= books.getBookCategory()%></td>
+                    <td><%= books.getStatus()%></td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Danger</a>
+                        <a href="#" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i> Edit</a>
+                        <a href="#" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash-can"></i> Delete</a>
                     </td>
                 </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Danger</a>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
-                    </td>
-                </tr>
+                <%
+                    }
+                %>
             </tbody>
         </table>
         <div style="margin-top: 190px;">
