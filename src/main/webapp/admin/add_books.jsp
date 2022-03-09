@@ -3,7 +3,8 @@
     Created on : Mar 9, 2022, 12:12:25 AM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,9 @@
     </head>
     <body style="background-color: #f0f1f2">
         <%@include file="navbar.jsp" %>
+        <c:if test="${empty userobj}">
+            <c:redirect url="../login.jsp" />
+        </c:if>
         <h3 class="text-center">Hello, Admin</h3>
         <div class="container mt-3">
             <div class="row">
@@ -21,7 +25,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="text-center">Add Books</h3>
-                            <form action="action" method="post" enctype="multipart/form-data">
+                            <form action="../add_book" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Book Name *</label>
                                     <input type="text" name="bookName" class="form-control" aria-describedby="emailHelp" required>
@@ -38,8 +42,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Book Category *</label>
-                                    <select id="category" class="form-control" name="bType" required>
-                                        <option selected>--- Select ---</option>
+                                    <select id="category" class="form-control" name="bCategory" required>
+                                        <option selected disabled>--- Select ---</option>
                                         <option value="New">New Book</option>                                      
                                     </select>
 
@@ -47,7 +51,7 @@
                                 <div class="form-group">
                                     <label>Book Status *</label>
                                     <select id="status" class="form-control" name="bStatus" required>
-                                        <option selected>--- Select ---</option>
+                                        <option selected disabled>--- Select ---</option>
                                         <option value="Active">Active</option>  
                                         <option value="Inactive">Inactive</option>  
                                     </select>

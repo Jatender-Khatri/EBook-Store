@@ -1,6 +1,9 @@
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\model\User.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\connection\DBConnection.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\admin\servlet\BooksAdd.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\LogoutServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\daoImpl\UserDaoImpl.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\dao\UserDao.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\LoginServlet.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\model\Books.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\RegisterServlet.java

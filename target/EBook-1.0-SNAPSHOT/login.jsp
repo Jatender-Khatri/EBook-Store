@@ -29,6 +29,14 @@
                                 </div>
                                 <c:remove var="failedMsg" />
                             </c:if>
+                            <c:if test="${not empty succMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-success" role="alert">
+                                        ${succMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="succMsg" />
+                            </c:if>
                             <div class="text-center">
                                 <i class="fa fa-user-plus fa-2x" aria-hidden="true"></i>
                                 <h5>Login Here</h5>
@@ -52,6 +60,9 @@
                 </div>
             </div>
         </div>
-        <%@include file="all_component/footer.jsp" %>
+        
+        <div style="margin-top: 30px;">
+            <%@include file="all_component/footer.jsp" %>
+        </div>
     </body>
 </html>

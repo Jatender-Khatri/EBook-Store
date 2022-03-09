@@ -20,14 +20,14 @@
                 background-repeat: no-repeat;
             }
             .crd-ho:hover{
-                background-color: #fcf7f7;
+                background-color: #f0f1f2;
             }
         </style>
     </head>
-    <body style="background-color: #f7f7f7">
+    <body style="background-color: #f0f1f2">
         <%@include file="all_component/navbar.jsp" %>
         <div class="container-fluid back-img">
-            <h2 class="text-center text-white"><i class="fa-solid fa-book"></i> EBook Management System</h2>
+            <h2 class="text-center text-white"><i class="fa-solid fa-book"></i> E-Book Management System</h2>
         </div>
         <!--start recent book-->
         <div class="container">
