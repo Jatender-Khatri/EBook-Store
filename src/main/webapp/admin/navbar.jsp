@@ -39,9 +39,9 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <h4>Do you want logout</h4>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <a href="../logout" class="btn btn-primary text-white">Logout</a> 
+                    <h4>Do you want logout?</h4>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                    <a href="../logout" class="btn btn-primary text-white">Yes</a> 
                 </div>
             </div>
             <div class="modal-footer">

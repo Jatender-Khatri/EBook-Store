@@ -16,4 +16,16 @@ public interface BookDao {
     public boolean insertBook(Books book);
     
     public List<Books> getAllBooks();
+    
+    public Books getBookById(Integer id);
+    
+    public boolean updateBook(Books books);
+    
+    public boolean deleteBook(Integer id);
+    
+    public List<Books> getNewBooks();
+    
+    public List<Books> getRecentBooks();
+    
+    public List<Books> getOldBooks();
 }

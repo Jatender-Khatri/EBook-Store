@@ -7,25 +7,21 @@ package com.admin.servlet;
 import com.connection.DBConnection;
 import com.dao.BookDao;
 import com.daoImpl.BookDaoImpl;
-import com.model.Books;
-import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
 
 /**
  *
  * @author MeGa
  */
-@WebServlet("/add_book")
-@MultipartConfig
-public class BooksAdd extends HttpServlet {
+@WebServlet("/delete")
+public class DeleteBookServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,31 +35,19 @@ public class BooksAdd extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String bookName = request.getParameter("bookName");
-            String author = request.getParameter("authorName");
-            String price = request.getParameter("bookPrice");
-            String category = request.getParameter("bCategory");
-            String status = request.getParameter("bStatus");
-            Part part = request.getPart("bImage");
-            String fileName = part.getSubmittedFileName();
-//            String path1 = getServletContext().getRealPath("") + "book";
-//            System.out.println(path1);
-            Books book = new Books(bookName, author, price, category, status, fileName, "Admin");
+            Integer id = Integer.parseInt(request.getParameter("id"));
 
-            BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
-
+            BookDao dao = new BookDaoImpl(DBConnection.getConnection());
+            boolean f = dao.deleteBook(id);
             HttpSession session = request.getSession();
-            boolean f = bookDao.insertBook(book);
             if (f) {
-                String path = getServletContext().getRealPath("") + "book";
-                File file = new File(path);
-                part.write(path + File.separator + fileName);
-                session.setAttribute("succMsg", "Book added Successfully");
-                response.sendRedirect("admin/add_books.jsp");
+                session.setAttribute("succMsg", "Book Deleted Successfully");
+                response.sendRedirect("admin/all_books.jsp");
             } else {
-                session.setAttribute("failedMsg", "Something went wrong");
-                response.sendRedirect("admin/add_books.jsp");
+                session.setAttribute("failedMsg", "Something went wrong on server");
+                response.sendRedirect("admin/all_books.jsp");
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Error : " + e.getMessage());

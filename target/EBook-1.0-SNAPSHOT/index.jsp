@@ -4,6 +4,11 @@
     Author     : MeGa
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.model.Books"%>
+<%@page import="com.daoImpl.BookDaoImpl"%>
+<%@page import="com.dao.BookDao"%>
+<%@page import="com.connection.DBConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,201 +38,124 @@
         <div class="container">
             <h1 class="text-center">Recent Book</h1>
             <div class="row">
+                <%
+                    BookDao dao1 = new BookDaoImpl(DBConnection.getConnection());
+                    List<Books> list1 = dao1.getRecentBooks();
+                    for (Books book1 : list1) {
+                %>
                 <div class="col-md-3">
                     <div class="card crd-ho">
                         <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
+                            <img src="book/<%= book1.getPhotoName()%>" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
+                            <p><b>Name: </b><%= book1.getBookName()%></p>
+                            <p><b>Author: </b><%= book1.getAuthor()%></p>
+                            <p><b>Category: </b><%= book1.getBookCategory()%></p>
+                            <%
+                                if (book1.getBookCategory().equals("Old")) {
+                            %>
+                            <div class="row">
+
+                                <a href="#" class="btn btn-success btn-sm ml-5">Details</a>
+                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
+                            </div>
+                            <%
+                            } else {
+                            %>
                             <div class="row">
                                 <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                                 <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
+                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
                             </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-1">
-                <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+                <%
+                    }
+                %>
             </div>
         </div>
-        <!--end recent book-->
+
+        <div class="text-center mt-1">
+            <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+        </div>
+    </div>
+    <!--end recent book-->
 
 
-        <hr>
-        <!--start new book-->
-        <div class="container">
-            <h1 class="text-center">New Book</h1>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
+    <hr>
+    <!--start new book-->
+    <div class="container">
+        <h1 class="text-center">New Book</h1>
+        <div class="row">
+
+            <%
+                BookDao dao = new BookDaoImpl(DBConnection.getConnection());
+                List<Books> list = dao.getNewBooks();
+                for (Books books : list) {
+            %>
+            <div class="col-md-3">
+                <div class="card crd-ho">
+                    <div class="card-body text-center">
+                        <img src="book/<%= books.getPhotoName()%>" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
+                        <p><b>Name: </b><%= books.getBookName()%></p>
+                        <p><b>Author: </b><%= books.getAuthor()%></p>
+                        <p><b>Category: </b><%= books.getBookCategory()%></p>
+                        <div class="row">
+                            <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                            <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
+                            <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
-            <div class="text-center mt-1">
-                <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+            <%
+                }
+            %>
+        </div>
+    </div>
+    <div class="text-center mt-1">
+        <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+    </div>
+</div>
+<!--end new book-->
+<hr>
+
+<!--start old book-->
+<div class="container">
+    <h1 class="text-center">Old Book</h1>
+    <div class="row">
+        <%
+               BookDao dao2 = new BookDaoImpl(DBConnection.getConnection());
+               List<Books> list2 = dao2.getOldBooks();
+               for (Books books : list2) {
+        %>
+        <div class="col-md-3">
+            <div class="card crd-ho">
+                <div class="card-body text-center">
+                    <img src="book/<%= books.getPhotoName()%>" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
+                    <p><b>Name: </b><%= books.getBookName()%></p>
+                    <p><b>Author: </b><%= books.getAuthor()%></p>
+                    <p><b>Category: </b><%= books.getBookCategory()%></p>
+                    <div class="row">
+                        <a href="#" class="btn btn-success btn-sm ml-5">Details</a>
+                        <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <!--end new book-->
-        <hr>
+        <%
+            }
+        %>
+    </div>
+    <div class="text-center mt-1">
+        <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+    </div>
+</div>
+<!--end old book-->
 
-        <!--start old book-->
-        <div class="container">
-            <h1 class="text-center">Old Book</h1>
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                
-                                <a href="#" class="btn btn-success btn-sm ml-5">View Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-2">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-success btn-sm ml-5">View Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-2">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-success btn-sm ml-5">View Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-2">&#8360; 299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card crd-ho">
-                        <div class="card-body text-center">
-                            <img src="book/javabook.jpg" alt="" style="width: 150px; height: 200px;" class="img-thumblin" />
-                            <p>Java Programming</p>
-                            <p>Umerkot</p>
-                            <p>Programming Category</p>
-                            <div class="row">
-                                <a href="#" class="btn btn-success btn-sm ml-5">View Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-2">299</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-1">
-                <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
-            </div>
-        </div>
-        <!--end old book-->
-        
-        <%@include file="all_component/footer.jsp" %>
-    </body>
+<%@include file="all_component/footer.jsp" %>
+</body>
 </html>
