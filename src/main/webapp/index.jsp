@@ -65,7 +65,18 @@
                             } else {
                             %>
                             <div class="row text-center">
-                                <a href="#" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                                <%
+                                    if (u == null) {
+                                %>
+                                <a href="login.jsp" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                                <%
+                                } else {
+                                %>
+                                <a href="Cart?id=<%= book1.getBookId()%>&&uid=<%= u.getUserId()%>" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                                <%
+                                    }
+                                %>
+
                                 <a href="view_book_details.jsp?id=<%=book1.getBookId()%>" class="btn btn-success btn-sm ml-1">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
                             </div>
@@ -110,7 +121,7 @@
                                 <%
                                 } else {
                                 %>
-                                <a href="CartServlet?id=<%= books.getBookId()%>&&uid=<%= u.getUserId()%>" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                                <a href="Cart?id=<%= books.getBookId()%>&&uid=<%= u.getUserId()%>" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                                 <%
                                     }
                                 %>

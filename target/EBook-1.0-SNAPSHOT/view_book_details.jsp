@@ -18,6 +18,7 @@
     </head>
     <body style="background: #f0f1f2">
         <%@include file="all_component/navbar.jsp" %>
+        
         <%
             Integer id = Integer.parseInt(request.getParameter("id"));
             BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
@@ -68,6 +69,7 @@
                     <%
                     } else {
                     %>
+                    
                     <div class="text-center p-3">
                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                         <a href="#" class="btn btn-danger">&#8360;. <%= b.getPrice()%></a>

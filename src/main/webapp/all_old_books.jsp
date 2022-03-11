@@ -3,7 +3,8 @@
     Created on : Mar 11, 2022, 1:33:27 PM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page import="java.util.List"%>
 <%@page import="com.model.Books"%>
 <%@page import="com.daoImpl.BookDaoImpl"%>
@@ -17,7 +18,7 @@
         <title>All Old Books Page - EBook</title>
         <%@include file="all_component/all_css.jsp" %>
         <style>
-            
+
             .crd-ho:hover{
                 background-color: #f0f1f2;
             }
@@ -41,7 +42,7 @@
                             <p><b>Author: </b><%= books.getAuthor()%></p>
                             <p><b>Category: </b><%= books.getBookCategory()%></p>
                             <div class="row">
-                                <a href="view_book_details.jsp" class="btn btn-success btn-sm ml-5">Details</a>
+                                <a href="view_book_details.jsp?id=<%= books.getBookId() %>" class="btn btn-success btn-sm ml-5">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></a>
                             </div>
                         </div>

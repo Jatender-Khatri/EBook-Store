@@ -16,8 +16,8 @@ public class Cart {
     private Integer uid;
     private String bookName;
     private String author;
-    private String price;
-    private String totalPrice;
+    private Double price;
+    private Double totalPrice;
 
     public Integer getId() {
         return id;
@@ -67,19 +67,19 @@ public class Cart {
         this.author = author;
     }
 
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
-    public String getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(String totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
