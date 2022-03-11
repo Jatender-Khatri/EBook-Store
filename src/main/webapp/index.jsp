@@ -54,15 +54,14 @@
                                 if (book1.getBookCategory().equals("Old")) {
                             %>
                             <div class="row">
-
                                 <a href="#" class="btn btn-success btn-sm ml-5">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
                             </div>
                             <%
                             } else {
                             %>
-                            <div class="row">
-                                <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                            <div class="row text-center">
+                                <a href="#" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                                 <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
                             </div>
@@ -79,7 +78,7 @@
         </div>
 
         <div class="text-center mt-1">
-            <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+            <a href="all_recent_books.jsp" class="btn btn-danger btn-sm text-white">View All</a>
         </div>
     </div>
     <!--end recent book-->
@@ -104,7 +103,7 @@
                         <p><b>Author: </b><%= books.getAuthor()%></p>
                         <p><b>Category: </b><%= books.getBookCategory()%></p>
                         <div class="row">
-                            <a href="#" class="btn btn-danger btn-sm ml-1"><i c<i class="fa-solid fa-cart-plus"></i> Add Cart</a>
+                            <a href="#" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                             <a href="#" class="btn btn-success btn-sm ml-1">Details</a>
                             <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></a>
                         </div>
@@ -117,7 +116,7 @@
         </div>
     </div>
     <div class="text-center mt-1">
-        <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+        <a href="all_new_books.jsp" class="btn btn-danger btn-sm text-white">View All</a>
     </div>
 </div>
 <!--end new book-->
@@ -128,9 +127,9 @@
     <h1 class="text-center">Old Book</h1>
     <div class="row">
         <%
-               BookDao dao2 = new BookDaoImpl(DBConnection.getConnection());
-               List<Books> list2 = dao2.getOldBooks();
-               for (Books books : list2) {
+            BookDao dao2 = new BookDaoImpl(DBConnection.getConnection());
+            List<Books> list2 = dao2.getOldBooks();
+            for (Books books : list2) {
         %>
         <div class="col-md-3">
             <div class="card crd-ho">
@@ -151,7 +150,7 @@
         %>
     </div>
     <div class="text-center mt-1">
-        <a href="#" class="btn btn-danger btn-sm text-white">View All</a>
+        <a href="all_old_books.jsp" class="btn btn-danger btn-sm text-white">View All</a>
     </div>
 </div>
 <!--end old book-->

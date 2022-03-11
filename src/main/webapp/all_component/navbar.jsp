@@ -31,14 +31,14 @@
                 <a class="nav-link" href="index.jsp">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#"><i class="fa-solid fa-book-open"></i> Recent Books</a>
+                <a class="nav-link active" href="all_recent_books.jsp"><i class="fa-solid fa-book-open"></i> Recent Books</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#"><i class="fa-solid fa-book-open"></i> New Books</a>
+                <a class="nav-link active" href="all_new_books.jsp"><i class="fa-solid fa-book-open"></i> New Books</a>
             </li>
             
             <li class="nav-item">
-                <a class="nav-link active" href="#"><i class="fa-solid fa-book-open"></i> Old Books</a>
+                <a class="nav-link active" href="all_old_books.jsp"><i class="fa-solid fa-book-open"></i> Old Books</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
