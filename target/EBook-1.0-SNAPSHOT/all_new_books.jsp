@@ -44,7 +44,7 @@
                             <p><b>Category: </b><%= books.getBookCategory()%></p>
                             <div class="row">
                                 <a href="#" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-2">Details</a>
+                                <a href="view_book_details.jsp" class="btn btn-success btn-sm ml-2">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-2">&#8360;. <%= books.getPrice()%></a>
                             </div>
                         </div>

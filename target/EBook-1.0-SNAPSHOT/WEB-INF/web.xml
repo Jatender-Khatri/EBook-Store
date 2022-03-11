@@ -24,6 +24,10 @@
         <servlet-name>DeleteBookServlet</servlet-name>
         <servlet-class>com.admin.servlet.DeleteBookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartServlet</servlet-name>
+        <servlet-class>com.servlet.CartServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>DeleteBookServlet</servlet-name>
         <url-pattern>/DeleteBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartServlet</servlet-name>
+        <url-pattern>/CartServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

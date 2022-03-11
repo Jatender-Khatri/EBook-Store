@@ -46,7 +46,7 @@
                                 if (book1.getBookCategory().equals("Old")) {
                             %>
                             <div class="row">
-                                <a href="#" class="btn btn-success btn-sm ml-5">Details</a>
+                                <a href="view_book_details.jsp" class="btn btn-success btn-sm ml-5">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
                             </div>
                             <%
@@ -54,9 +54,10 @@
                             %>
                             <div class="row">
                                 <a href="#" class="btn btn-danger btn-sm ml-3"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                                <a href="#" class="btn btn-success btn-sm ml-2">Details</a>
+                                <a href="view_book_details.jsp" class="btn btn-success btn-sm ml-2">Details</a>
                                 <a href="#" class="btn btn-danger btn-sm ml-2">&#8360;. <%= book1.getPrice()%></a>
                             </div>
+                            
                             <%
                                 }
                             %>
@@ -67,6 +68,7 @@
                     }
                 %>
             </div>
+            
         </div>
         <%@include file="all_component/footer.jsp" %>
     </body>
