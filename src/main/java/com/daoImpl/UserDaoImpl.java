@@ -75,13 +75,18 @@ public class UserDaoImpl implements UserDao {
     public boolean updateProfile(User arg0) {
         boolean f = false;
         try {
-            String update = "update user set name=?,email=?,phoneNumber=?,password=? where id = ?";
+            String update = "update user set name=?, email=?, phoneNumber=?, password=? where id = ?";
             PreparedStatement ps = con.prepareStatement(update);
             ps.setString(1, arg0.getName());
             ps.setString(2, arg0.getEmail());
             ps.setString(3, arg0.getPhoneNumber());
             ps.setString(4, arg0.getPassword());
-            ps.setInt(4, arg0.getUserId());
+            ps.setInt(5, arg0.getUserId());
+
+            Integer roll = ps.executeUpdate();
+            if (roll == 1) {
+                f = true;
+            }
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
             e.printStackTrace();
@@ -114,6 +119,30 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
         return u;
+    }
+
+    @Override
+    public boolean updateUserOtherDetail(User arg0) {
+        boolean f = false;
+        try {
+            String update = "update user set address=?, landmark=?, city=?, state=?, zipcode=? where id = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+            ps.setString(1, arg0.getAddress());
+            ps.setString(2, arg0.getLandmark());
+            ps.setString(3, arg0.getCity());
+            ps.setString(4, arg0.getState());
+            ps.setString(5, arg0.getZipCode());
+            ps.setInt(6, arg0.getUserId());
+
+            Integer roll = ps.executeUpdate();
+            if (roll == 1) {
+                f = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return f;
     }
 
 }

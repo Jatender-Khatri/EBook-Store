@@ -35,6 +35,22 @@
             <c:if test="${not empty userobj}">
                 <h1 class="text-center">Hello, ${userobj.name}</h1>
             </c:if>
+            <c:if test="${not empty succMsg}">
+                <div class="container text-center mt-2">
+                    <div class="alert alert-success" role="alert">
+                        ${succMsg}
+                    </div>
+                </div>
+                <c:remove var="succMsg" />
+            </c:if>
+            <c:if test="${not empty failedMsg}">         
+                <div class="container text-center mt-2">           
+                    <div class="alert alert-danger" role="alert">
+                        ${failedMsg}
+                    </div>
+                </div>
+                <c:remove var="failedMsg" />
+            </c:if>
             <div class="row p-5">
                 <!--start sell old book-->
                 <div class="col-md-4">
@@ -80,23 +96,9 @@
                     </a>
                 </div> 
                 <!--end login and security-->
-                <!--start location-->
-                <div class="col-md-4 mt-3">
-                    <a href="user_address.jsp">
-                        <div class="card crd-ho" style="height: 180px;">
-                            <div class="card-body text-center">
-                                <div class="text-warning">
-                                    <i class="fas fa-map-marker-alt fa-3x"></i>
-                                </div>
-                                <h3>Your Address</h3>
-                                <p><b>Edit Address</b></p>
-                            </div>
-                        </div>
-                    </a>
-                </div> 
-                <!--end location -->
+                
                 <!--start order-->
-                <div class="col-md-4 mt-3">
+                <div class="col-md-6 mt-3">
                     <a href="order.jsp">
                         <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">
@@ -112,7 +114,7 @@
                 <!--end order -->
 
                 <!--start help center-->
-                <div class="col-md-4 mt-3">
+                <div class="col-md-6 mt-3">
                     <a href="helpline.jsp">
                         <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">

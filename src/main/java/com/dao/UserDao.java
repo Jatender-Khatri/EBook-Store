@@ -18,4 +18,6 @@ public interface UserDao {
     public boolean updateProfile(User u);
     
     public User getUserByUserId(Integer id);
+    
+    public boolean updateUserOtherDetail(User u);
 }

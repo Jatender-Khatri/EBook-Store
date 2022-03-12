@@ -1,7 +1,10 @@
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\RemoveBookServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\admin\servlet\DeleteBookServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\LogoutServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\daoImpl\CartDaoImpl.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\dao\UserDao.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\UpdateUserServlet.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\DeleteUserOldBookServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\LoginServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\dao\CartDao.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\model\Books.java
@@ -11,6 +14,7 @@ E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\connection\DBConnect
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\admin\servlet\BooksAdd.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\daoImpl\BookDaoImpl.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\daoImpl\UserDaoImpl.java
+E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\SellOldBookServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\admin\servlet\EditBookServlet.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\dao\BookDao.java
 E:\Feelancing\Fiverr\Deliver Orders\EBook\src\main\java\com\servlet\CartServlet.java

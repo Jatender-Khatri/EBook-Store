@@ -17,7 +17,7 @@
         <c:if test="${not empty userobj}">
             <div class="col-md-3">
                 <a href="checkout.jsp"><i class="fas fa-cart-plus fa-2x"></i></a>
-                <a href="login.jsp" class="btn btn-success"><i class="fa-solid fa-user"></i> ${userobj.name}</a>
+                <a href="setting_page.jsp" class="btn btn-success"><i class="fa-solid fa-user"></i> ${userobj.name}</a>
                 <a data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary text-white"><i class="fa-solid fa-right-to-bracket"></i> Logout</a>
             </div>
         </c:if>

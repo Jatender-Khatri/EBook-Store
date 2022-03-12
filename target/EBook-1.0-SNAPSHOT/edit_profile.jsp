@@ -45,7 +45,6 @@
                                     <label>Password *</label>
                                     <input type="text" value="${userobj.password}" name="password" required class="form-control">
                                 </div>
-
                                 <br>
                                 <button type="submit" class="btn btn-primary badge-pill btn-block">Edit Profile</button>
                             </form>

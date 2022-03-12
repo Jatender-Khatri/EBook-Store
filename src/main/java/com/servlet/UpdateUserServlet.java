@@ -4,6 +4,9 @@
  */
 package com.servlet;
 
+import com.connection.DBConnection;
+import com.dao.UserDao;
+import com.daoImpl.UserDaoImpl;
 import com.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,12 +42,24 @@ public class UpdateUserServlet extends HttpServlet {
             String password = request.getParameter("password");
             String number = request.getParameter("number");
             
-            System.out.println("Name : " + name);
-            System.out.println("email : " + email);
-            System.out.println("password : " + password);
-            System.out.println("number : " + number);
-           System.out.println("id : " + id);
+            User u = new User();
+            u.setEmail(email);
+            u.setUserId(id);
+            u.setName(name);
+            u.setPassword(password);
+            u.setPhoneNumber(number);
+            HttpSession session = request.getSession();
+            UserDao dao = new UserDaoImpl(DBConnection.getConnection());
             
+            boolean f = dao.updateProfile(u);
+             if (f) {
+                session.setAttribute("succMsg", "Profile Updated Successfully");
+                response.sendRedirect("setting_page.jsp");
+            } else {
+                session.setAttribute("failedMsg", "Something went wrong");
+                response.sendRedirect("setting_page.jsp");
+            }
+
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
             e.printStackTrace();
