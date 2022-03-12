@@ -12,6 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Admin User Page - E-Books</title>
         <%@include file="all_css.jsp" %>
+
         <style>
             a{
                 text-decoration: none;
@@ -19,8 +20,12 @@
             }
             a:hover{
                 text-decoration: none;
-                color: black;
+
             }
+            .crd-ho:hover{
+                background-color: #f0f1f2;
+            }
+
         </style>
     </head>
     <body style="background-color: #f0f1f2">
@@ -34,7 +39,7 @@
 
                 <div class="col-md-3">
                     <a href="add_books.jsp">
-                        <div class="card">
+                        <div class="card crd-ho">
                             <div class="card-body text-center">
                                 <i class="fas fa-plus-square fa-3x text-primary"></i>
                                 <h4>Add Books</h4>
@@ -46,7 +51,7 @@
 
                 <div class="col-md-3">
                     <a href="all_books.jsp">
-                        <div class="card">
+                        <div class="card crd-ho">
                             <div class="card-body text-center">
                                 <i class="fa-solid fa-book-open fa-3x text-danger"></i>
                                 <h4>All Books</h4>
@@ -58,7 +63,7 @@
 
                 <div class="col-md-3">
                     <a href="orders.jsp">
-                        <div class="card">
+                        <div class="card crd-ho">
                             <div class="card-body text-center">
                                 <i class="fas fa-box-open fa-3x text-warning"></i>
                                 <h4>Orders</h4>
@@ -70,7 +75,7 @@
 
                 <div class="col-md-3">
                     <a data-toggle="modal" data-target="#exampleModalCenter" >
-                        <div class="card">
+                        <div class="card crd-ho">
                             <div class="card-body text-center">
                                 <i class="fa-solid fa-right-to-bracket fa-3x text-primary"></i>
                                 <h4>Logout</h4>

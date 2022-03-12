@@ -299,7 +299,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public List<Books> getAllOldBook() {
         List<Books> list = new ArrayList<>();
-        Books b = null;
+
         try {
             String query = "select * from books  where bookCategory = ? and status=? order by id DESC";
             PreparedStatement ps = con.prepareStatement(query);
@@ -309,7 +309,7 @@ public class BookDaoImpl implements BookDao {
             ResultSet set = ps.executeQuery();
 
             while (set.next()) {
-                b = new Books();
+                Books b = new Books();
                 b.setBookId(set.getInt("id"));
                 b.setAuthor(set.getString("author"));
                 b.setBookCategory(set.getString("bookCategory"));
@@ -326,6 +326,56 @@ public class BookDaoImpl implements BookDao {
             e.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public List<Books> getUserAllOldBooks(String arg0, String arg1) {
+        List<Books> list = new ArrayList<>();
+        Books b = null;
+        try {
+            String query = "select * from books where email=? and bookCategory=?";
+
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, arg0);
+            ps.setString(2, arg1);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                b = new Books();
+                b.setBookId(set.getInt("id"));
+                b.setAuthor(set.getString("author"));
+                b.setBookCategory(set.getString("bookCategory"));
+                b.setBookName(set.getString("bName"));
+                b.setEmail(set.getString("email"));
+                b.setPhotoName(set.getString("photo"));
+                b.setPrice(set.getString("price"));
+                b.setStatus(set.getString("status"));
+                list.add(b);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public boolean deleteUseOldBook(String arg0, String arg1, Integer arg2) {
+        boolean b = false;
+        try {
+            String delete = "delete from books where email=? and bookCategory=? and id=?";
+            PreparedStatement ps = con.prepareStatement(delete);
+            ps.setString(1, arg0);
+            ps.setString(2, arg1);
+            ps.setInt(3, arg2);
+            Integer roll = ps.executeUpdate();
+            if(roll==1)
+            {
+                b = true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return b;
     }
 
 }

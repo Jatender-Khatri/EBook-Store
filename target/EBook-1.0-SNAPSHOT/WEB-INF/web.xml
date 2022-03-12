@@ -32,6 +32,18 @@
         <servlet-name>RemoveBookServlet</servlet-name>
         <servlet-class>com.servlet.RemoveBookServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SellOldBookServlet</servlet-name>
+        <servlet-class>com.servlet.SellOldBookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteUserOldBookServlet</servlet-name>
+        <servlet-class>com.servlet.DeleteUserOldBookServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>com.servlet.UpdateUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/RegisterServlet</url-pattern>
@@ -63,6 +75,18 @@
     <servlet-mapping>
         <servlet-name>RemoveBookServlet</servlet-name>
         <url-pattern>/RemoveBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SellOldBookServlet</servlet-name>
+        <url-pattern>/SellOldBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteUserOldBookServlet</servlet-name>
+        <url-pattern>/DeleteUserOldBookServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/UpdateUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,8 +5,8 @@
 package com.servlet;
 
 import com.connection.DBConnection;
-import com.dao.CartDao;
-import com.daoImpl.CartDaoImpl;
+import com.dao.BookDao;
+import com.daoImpl.BookDaoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author MeGa
  */
-@WebServlet("/remove_book")
-public class RemoveBookServlet extends HttpServlet {
+@WebServlet("/delete_old_book")
+public class DeleteUserOldBookServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,21 +35,21 @@ public class RemoveBookServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            String email = request.getParameter("email");
             Integer bid = Integer.parseInt(request.getParameter("bid"));
-            Integer uid = Integer.parseInt(request.getParameter("uid"));
-            Integer cid = Integer.parseInt(request.getParameter("cid"));
-            CartDao cartDao = new CartDaoImpl(DBConnection.getConnection());
-            boolean f = cartDao.deleteBook(bid,uid,cid);
+            BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
+            
+            boolean f = bookDao.deleteUseOldBook(email, "Old", bid);
             HttpSession session = request.getSession();
             if(f)
             {
-                session.setAttribute("succMsg", "Book Removed from cart");
-                response.sendRedirect("checkout.jsp");
+                session.setAttribute("succMsg", "Book delete successfully");
+                response.sendRedirect("old_book.jsp");
             }
             else
             {
                 session.setAttribute("failedMsg", "Something went wrong on server");
-                response.sendRedirect("checkout.jsp");
+                response.sendRedirect("old_book.jsp");
             }
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());

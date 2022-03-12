@@ -5,23 +5,28 @@
 package com.servlet;
 
 import com.connection.DBConnection;
-import com.dao.CartDao;
-import com.daoImpl.CartDaoImpl;
+import com.dao.BookDao;
+import com.daoImpl.BookDaoImpl;
+import com.model.Books;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author MeGa
  */
-@WebServlet("/remove_book")
-public class RemoveBookServlet extends HttpServlet {
+@WebServlet("/sell_old_book")
+@MultipartConfig
+public class SellOldBookServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,26 +39,36 @@ public class RemoveBookServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            Integer bid = Integer.parseInt(request.getParameter("bid"));
-            Integer uid = Integer.parseInt(request.getParameter("uid"));
-            Integer cid = Integer.parseInt(request.getParameter("cid"));
-            CartDao cartDao = new CartDaoImpl(DBConnection.getConnection());
-            boolean f = cartDao.deleteBook(bid,uid,cid);
+       try {
+            String bookName = request.getParameter("bookName");
+            String author = request.getParameter("authorName");
+            String price = request.getParameter("bookPrice");
+            String category = "Old";
+            String status = "Active";
+            Part part = request.getPart("bImage");
+            String fileName = part.getSubmittedFileName();
+            String userEmail = request.getParameter("user");
+//            String path1 = getServletContext().getRealPath("") + "book";
+//            System.out.println(path1);
+            Books book = new Books(bookName, author, price, category, status, fileName, userEmail);
+
+            BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
+
             HttpSession session = request.getSession();
-            if(f)
-            {
-                session.setAttribute("succMsg", "Book Removed from cart");
-                response.sendRedirect("checkout.jsp");
-            }
-            else
-            {
-                session.setAttribute("failedMsg", "Something went wrong on server");
-                response.sendRedirect("checkout.jsp");
+            boolean f = bookDao.insertBook(book);
+            if (f) {
+                String path = getServletContext().getRealPath("") + "book";
+                File file = new File(path);
+                part.write(path + File.separator + fileName);
+                session.setAttribute("succMsg", "Book Selled Successfully");
+                response.sendRedirect("sell_book.jsp");
+            } else {
+                session.setAttribute("failedMsg", "Something went wrong");
+                response.sendRedirect("sell_book.jsp");
             }
         } catch (Exception e) {
-            System.out.println("Error : " + e.getMessage());
             e.printStackTrace();
+            System.out.println("Error : " + e.getMessage());
         }
     }
 

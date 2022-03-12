@@ -71,4 +71,49 @@ public class UserDaoImpl implements UserDao {
         return u;
     }
 
+    @Override
+    public boolean updateProfile(User arg0) {
+        boolean f = false;
+        try {
+            String update = "update user set name=?,email=?,phoneNumber=?,password=? where id = ?";
+            PreparedStatement ps = con.prepareStatement(update);
+            ps.setString(1, arg0.getName());
+            ps.setString(2, arg0.getEmail());
+            ps.setString(3, arg0.getPhoneNumber());
+            ps.setString(4, arg0.getPassword());
+            ps.setInt(4, arg0.getUserId());
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return f;
+    }
+
+    @Override
+    public User getUserByUserId(Integer arg0) {
+        User u = new User();
+        try {
+            String login = "select * from user where id=?";
+            PreparedStatement ps = con.prepareStatement(login);
+            ps.setInt(1, arg0);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                u.setCity(set.getString("city"));
+                u.setEmail(set.getString("email"));
+                u.setLandmark(set.getString("landmark"));
+                u.setName(set.getString("name"));
+                u.setPassword(set.getString("password"));
+                u.setPhoneNumber(set.getString("phoneNumber"));
+                u.setState(set.getString("state"));
+                u.setUserId(set.getInt("id"));
+                u.setZipCode(set.getString("zip"));
+                u.setAddress(set.getString("address"));
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return u;
+    }
+
 }

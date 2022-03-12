@@ -79,13 +79,14 @@ public class CartDaoImpl implements CartDao {
     }
 
     @Override
-    public boolean deleteBook(Integer arg0, Integer arg1) {
+    public boolean deleteBook(Integer arg0, Integer arg1, Integer arg2) {
         boolean f = false;
         try {
-            String delete = "delete from cart where bid=? and uid=?";
+            String delete = "delete from cart where bid=? and uid=? and cid=?";
             PreparedStatement ps = con.prepareStatement(delete);
             ps.setInt(1, arg0);
             ps.setInt(2, arg1);
+            ps.setInt(3, arg2);
             Integer roll = ps.executeUpdate();
             if(roll==1)
             {

@@ -14,17 +14,40 @@
         <%@include file="all_component/all_css.jsp" %>
     </head>
     <body style="background-color: #f0f1f2">
+        <c:if test="${empty userobj}">
+            <c:redirect url="login.jsp" />
+        </c:if>
+
         <%@include file="all_component/navbar.jsp" %>
-       
-        <h3 class="text-center">Hello, Jatender Khatri</h3>
+
+        <c:if test="${not empty userobj}">
+            <h1 class="text-center">Hello, ${userobj.name}</h1>
+        </c:if>
         <div class="container mt-3">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="card">
+
                         <div class="card-body">
-                            
-                            <h3 class="text-center">Sell Book</h3>
-                            <form action="" method="post" enctype="multipart/form-data">
+                            <c:if test="${not empty succMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-success" role="alert">
+                                        ${succMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="succMsg" />
+                            </c:if>
+                            <c:if test="${not empty failedMsg}">
+                                <div class="container text-center">
+                                    <div class="alert alert-danger" role="alert">
+                                        ${failedMsg}
+                                    </div>
+                                </div>
+                                <c:remove var="failedMsg" />
+                            </c:if>
+                            <h3 class="text-center">Sell Old Book</h3>
+                            <form action="sell_old_book" method="post" enctype="multipart/form-data">
+                                <input type="hidden" value="${userobj.email}" name="user">
                                 <div class="form-group">
                                     <label>Book Name *</label>
                                     <input type="text" name="bookName" class="form-control" aria-describedby="emailHelp" required>
@@ -39,7 +62,7 @@
                                     <label>Book Price *</label>
                                     <input type="number" name="bookPrice" class="form-control" aria-describedby="emailHelp" required>
                                 </div>
-                                
+
                                 <div class="form-group">
                                     <label>Upload Image</label>
                                     <input type="file" name="bImage" class="form-control" required>

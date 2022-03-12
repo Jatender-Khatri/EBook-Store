@@ -3,7 +3,8 @@
     Created on : Mar 12, 2022, 1:58:28 AM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,9 @@
         <%@include file="all_component/all_css.jsp" %>
     </head>
     <body>
+        <c:if test="${empty userobj}">
+            <c:redirect url="login.jsp" />
+        </c:if>
         <%@include file="all_component/navbar.jsp" %>
         <div class="container">
             <div class="row p-5">
@@ -32,6 +36,6 @@
         <div style="margin-top: 90px;">
             <%@include file="all_component/footer.jsp" %>
         </div>
-        
+
     </body>
 </html>

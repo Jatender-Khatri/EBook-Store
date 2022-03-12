@@ -18,7 +18,7 @@
     </head>
     <body style="background: #f0f1f2">
         <%@include file="all_component/navbar.jsp" %>
-        
+
         <%
             Integer id = Integer.parseInt(request.getParameter("id"));
             BookDao bookDao = new BookDaoImpl(DBConnection.getConnection());
@@ -38,6 +38,14 @@
                         if ("Old".equals(b.getBookCategory())) {
                     %>
                     <h5 class="text-primary">Contact to Seller</h5>
+                    <h5 class="text-primary">
+                        <i class="far fa-envelope"></i>
+                        Email: <%= b.getEmail()%>
+                    </h5>
+                    <%
+                    } else {
+                    %>
+                    <h5 class="text-primary">Contact to Admin</h5>
                     <h5 class="text-primary">
                         <i class="far fa-envelope"></i>
                         Email: <%= b.getEmail()%>
@@ -69,7 +77,7 @@
                     <%
                     } else {
                     %>
-                    
+
                     <div class="text-center p-3">
                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
                         <a href="#" class="btn btn-danger">&#8360;. <%= b.getPrice()%></a>
@@ -81,9 +89,9 @@
                 </div>
             </div>
         </div>
-                    <div style="margin-top: 45px;">
-<%@include file="all_component/footer.jsp" %>
+        <div style="margin-top: 45px;">
+            <%@include file="all_component/footer.jsp" %>
         </div>
-        
+
     </body>
 </html>

@@ -3,7 +3,8 @@
     Created on : Mar 12, 2022, 1:39:12 AM
     Author     : MeGa
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page isELIgnored="false" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,7 +13,11 @@
         <title>User Address Page - EBook</title>
         <%@include file="all_component/all_css.jsp" %>
     </head>
+
     <body style="background-color: #f0f1f2">
+        <c:if test="${empty userobj}">
+            <c:redirect url="login.jsp" />
+        </c:if>
         <%@include file="all_component/navbar.jsp" %>
         <h3 class="text-center">Hello, Jatender Khatri</h3>
         <div class="container mt-3">

@@ -4,9 +4,7 @@
  */
 package com.servlet;
 
-import com.connection.DBConnection;
-import com.dao.CartDao;
-import com.daoImpl.CartDaoImpl;
+import com.model.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,14 +12,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author MeGa
  */
-@WebServlet("/remove_book")
-public class RemoveBookServlet extends HttpServlet {
+@WebServlet("/update_user")
+public class UpdateUserServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,22 +32,18 @@ public class RemoveBookServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            Integer bid = Integer.parseInt(request.getParameter("bid"));
-            Integer uid = Integer.parseInt(request.getParameter("uid"));
-            Integer cid = Integer.parseInt(request.getParameter("cid"));
-            CartDao cartDao = new CartDaoImpl(DBConnection.getConnection());
-            boolean f = cartDao.deleteBook(bid,uid,cid);
-            HttpSession session = request.getSession();
-            if(f)
-            {
-                session.setAttribute("succMsg", "Book Removed from cart");
-                response.sendRedirect("checkout.jsp");
-            }
-            else
-            {
-                session.setAttribute("failedMsg", "Something went wrong on server");
-                response.sendRedirect("checkout.jsp");
-            }
+            Integer id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            String number = request.getParameter("number");
+            
+            System.out.println("Name : " + name);
+            System.out.println("email : " + email);
+            System.out.println("password : " + password);
+            System.out.println("number : " + number);
+           System.out.println("id : " + id);
+            
         } catch (Exception e) {
             System.out.println("Error : " + e.getMessage());
             e.printStackTrace();
