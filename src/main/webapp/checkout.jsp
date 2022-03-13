@@ -19,7 +19,7 @@
         <title>Cart Page - EBook</title>
         <%@include file="all_component/all_css.jsp" %>
     </head>
-    <body>
+    <body style="background-color: #f0f1f2">
         <%@include file="all_component/navbar.jsp" %>
         <c:if test="${empty userobj}">
             <c:redirect url="login.jsp" />
@@ -50,7 +50,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="text-center text-success">Your Selected Items</h3>
-                            <table class="table table-striped">
+                            <table class="table text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">Book Name</th>
@@ -69,10 +69,10 @@
                                             totalPrice = c.getTotalPrice();
                                     %>
                                     <tr>
-                                        <th scope="row"><%= c.getBookName()%></th>
+                                        <td><%= c.getBookName()%></td>
                                         <td><%= c.getAuthor()%></td>
                                         <td><%= c.getPrice()%></td>
-                                        <td><a href="remove_book?bid=<%= c.getBid()%>&&uid=<%= c.getUid() %>&&cid=<%= c.getCid() %>" class="btn btn-sm btn-danger text-white">Delete</a></td>
+                                        <td><a href="remove_book?bid=<%= c.getBid()%>&&uid=<%= c.getUid() %>&&cid=<%= c.getCid() %>" class="btn btn-sm btn-danger text-white"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
                                     </tr>
                                     <%
                                         }
@@ -94,53 +94,55 @@
                         <div class="card-body">
                             <h3 class="text-center text-success">Your Details for Order</h3>
                             <hr>
-                            <form action="action">
+                            <form action="order" method="post">
+                                <input type="hidden" name="id" value="${userobj.userId}">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Name *</label>
-                                        <input type="text" class="form-control" id="inputEmail4" readonly value="<%= u.getName() %>">
+                                        <input type="text" class="form-control" id="inputEmail4" readonly value="<%= u.getName() %>" name="name" >
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Email *</label>
-                                        <input type="email" class="form-control" id="inputPassword4" readonly value="<%= u.getEmail()%>">
+                                        <input type="email" class="form-control" id="inputPassword4" readonly value="<%= u.getEmail()%>" name="email">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Phone Number *</label>
-                                        <input type="number" class="form-control" id="inputEmail4" required value="<%= u.getPhoneNumber()%>">
+                                        <input type="number" class="form-control" id="inputEmail4" required value="<%= u.getPhoneNumber()%>" name="number">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Address *</label>
-                                        <input type="text" class="form-control" id="inputPassword4" required value="">
+                                        <input type="text" class="form-control" id="inputPassword4" name="address" required >
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Landmark *</label>
-                                        <input type="text" class="form-control" id="inputEmail4" required value="">
+                                        <input type="text" class="form-control" id="inputEmail4" name="landmark" required >
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">City *</label>
-                                        <input type="text" class="form-control" id="inputPassword4" required value="">
+                                        <input type="text" class="form-control" id="inputPassword4" name="city" required >
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">State *</label>
-                                        <input type="text" class="form-control" id="inputEmail4" required value="">
+                                        <input type="text" class="form-control" id="inputEmail4" name="state" required >
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Zip Code *</label>
-                                        <input type="number" class="form-control" id="inputPassword4" required value="">
+                                        <input type="number" class="form-control" id="inputPassword4" name="zipcode" required >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label>Payment Mode</label>
-                                    <select id="id" class="form-control">
-                                        <option value="first"> Cash on Delivery</option>
-                                        <option value="second">Easypaisa Account</option>
-                                        <option value="third">Bank Transfer</option>
+                                    <select id="id" class="form-control" name="paymentType">
+                                        <option value="noselect">Please select Payment Type</option>
+                                        <option value="cash">Cash on Delivery</option>
+                                        <option value="easypaisa">Easypaisa Account</option>
+                                        <option value="bank">Bank Transfer</option>
                                     </select>
                                 </div>
                                 <div class="text-center">

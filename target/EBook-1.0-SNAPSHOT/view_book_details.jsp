@@ -72,7 +72,7 @@
                     %>
                     <div class="text-center p-3">
                         <a href="index.jsp" class="btn btn-success"><i class="fa-solid fa-cart-plus"></i> Continue Shopping</a>
-                        <a href="#" class="btn btn-danger">&#8360;. <%= b.getPrice()%></a>
+                        <button  class="btn btn-danger">&#8360;. <%= b.getPrice()%></button>
                     </div>
                     <%
                     } else {
@@ -80,7 +80,7 @@
 
                     <div class="text-center p-3">
                         <a href="#" class="btn btn-primary"><i class="fa-solid fa-cart-plus"></i> Add Cart</a>
-                        <a href="#" class="btn btn-danger">&#8360;. <%= b.getPrice()%></a>
+                        <button href="#" class="btn btn-danger">&#8360;. <%= b.getPrice()%></button>
                     </div>
                     <%
                         }

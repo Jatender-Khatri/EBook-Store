@@ -43,7 +43,7 @@
                             <p><b>Category: </b><%= books.getBookCategory()%></p>
                             <div class="row">
                                 <a href="view_book_details.jsp?id=<%= books.getBookId() %>" class="btn btn-success btn-sm ml-5">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></a>
+                                <button  class="btn btn-danger btn-sm ml-1">&#8360;. <%= books.getPrice()%></button>
                             </div>
                         </div>
                     </div>

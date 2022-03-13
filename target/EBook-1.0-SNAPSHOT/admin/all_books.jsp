@@ -43,9 +43,9 @@
             </div>
             <c:remove var="failedMsg" />
         </c:if>
-        <div class="container" style="background-color: white;">
+        <div class="container mt-3" style="background-color: white;">
             <h1 class="text-center">Hello, Admin</h1>
-            <table  class="table  mt-3">
+            <table class="table ">
                 <thead class="bg-primary text-white text-center">
                     <tr>
                         <th scope="col">ID</th>

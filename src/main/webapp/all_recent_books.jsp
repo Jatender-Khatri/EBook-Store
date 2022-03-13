@@ -115,7 +115,7 @@
                             %>
                             <div class="row">
                                 <a href="view_book_details.jsp?id=<%= book1.getBookId()%>" class="btn btn-success btn-sm ml-5"> View Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></a>
+                                <button  class="btn btn-danger btn-sm ml-1">&#8360;. <%= book1.getPrice()%></button>
                             </div>
                             <%
                             } else {
@@ -134,7 +134,7 @@
                                 %>
 
                                 <a href="view_book_details.jsp?id=<%= book1.getBookId()%>" class="btn btn-success btn-sm ml-2">Details</a>
-                                <a href="#" class="btn btn-danger btn-sm ml-2">&#8360;. <%= book1.getPrice()%></a>
+                                <button class="btn btn-danger btn-sm ml-2">&#8360;. <%= book1.getPrice()%></button>>
                             </div>
 
                             <%

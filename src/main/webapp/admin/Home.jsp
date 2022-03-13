@@ -39,8 +39,9 @@
 
                 <div class="col-md-3">
                     <a href="add_books.jsp">
-                        <div class="card crd-ho">
+                        <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">
+                                <br>
                                 <i class="fas fa-plus-square fa-3x text-primary"></i>
                                 <h4>Add Books</h4>
                                 -----------------
@@ -51,8 +52,9 @@
 
                 <div class="col-md-3">
                     <a href="all_books.jsp">
-                        <div class="card crd-ho">
+                        <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">
+                                <br>
                                 <i class="fa-solid fa-book-open fa-3x text-danger"></i>
                                 <h4>All Books</h4>
                                 -----------------
@@ -63,8 +65,9 @@
 
                 <div class="col-md-3">
                     <a href="orders.jsp">
-                        <div class="card crd-ho">
+                        <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">
+                                <br>
                                 <i class="fas fa-box-open fa-3x text-warning"></i>
                                 <h4>Orders</h4>
                                 -----------------
@@ -75,8 +78,9 @@
 
                 <div class="col-md-3">
                     <a data-toggle="modal" data-target="#exampleModalCenter" >
-                        <div class="card crd-ho">
+                        <div class="card crd-ho" style="height: 180px;">
                             <div class="card-body text-center">
+                                <br>
                                 <i class="fa-solid fa-right-to-bracket fa-3x text-primary"></i>
                                 <h4>Logout</h4>
                                 -----------------
@@ -113,7 +117,7 @@
             </div>
         </div>
         <!--end of logout model-->
-        <div style="margin-top: 130px;">
+        <div style="margin-top: 100px;">
             <%@include file="footer.jsp" %>
         </div>
 
