@@ -72,7 +72,7 @@
                                         <td><%= c.getBookName()%></td>
                                         <td><%= c.getAuthor()%></td>
                                         <td><%= c.getPrice()%></td>
-                                        <td><a href="remove_book?bid=<%= c.getBid()%>&&uid=<%= c.getUid() %>&&cid=<%= c.getCid() %>" class="btn btn-sm btn-danger text-white"><i class="fa-solid fa-trash-can"></i> Delete</a></td>
+                                        <td><a href="remove_book?bid=<%= c.getBid()%>&&uid=<%= c.getUid()%>&&cid=<%= c.getCid()%>" class="btn btn-sm btn-danger text-white"><i class="fa-solid fa-trash-can"></i> Remove</a></td>
                                     </tr>
                                     <%
                                         }
@@ -99,7 +99,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Name *</label>
-                                        <input type="text" class="form-control" id="inputEmail4" readonly value="<%= u.getName() %>" name="name" >
+                                        <input type="text" class="form-control" id="inputEmail4" readonly value="<%= u.getName()%>" name="name" >
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Email *</label>
@@ -140,9 +140,10 @@
                                     <label>Payment Mode</label>
                                     <select id="id" class="form-control" name="paymentType">
                                         <option value="noselect">Please select Payment Type</option>
-                                        <option value="cash">Cash on Delivery</option>
-                                        <option value="easypaisa">Easypaisa Account</option>
-                                        <option value="bank">Bank Transfer</option>
+                                        <option value="Cash on Delivery">Cash on Delivery</option>
+                                        <option value="Bank Transfer">Bank Transfer</option>
+                                        <option value="JazzCash Account">JazzCash Account</option>
+                                        <option value="Easypaisa Account">Easypaisa Account</option>
                                     </select>
                                 </div>
                                 <div class="text-center">

@@ -20,4 +20,6 @@ public interface UserDao {
     public User getUserByUserId(Integer id);
     
     public boolean updateUserOtherDetail(User u);
+    
+    public boolean checkEmail(String email);
 }

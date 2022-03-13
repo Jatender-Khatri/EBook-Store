@@ -9,8 +9,8 @@
             <h3><i class="fa-solid fa-book"></i> E-Book Store</h3>
         </div>
         <div class="col-md-6">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method="post" action="search.jsp">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="ch">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>

@@ -50,12 +50,18 @@ public class RegisterServlet extends HttpServlet {
             HttpSession session = request.getSession();
             if (checkBox != null) {
                 UserDao userDao = new UserDaoImpl(DBConnection.getConnection());
-                boolean f = userDao.userRegistration(u);
-                if (f) {
-                    session.setAttribute("succMsg", "Registration Successfully");
-                    response.sendRedirect("register.jsp");
+                boolean f2 = userDao.checkEmail(email);
+                if (f2) {
+                    boolean f = userDao.userRegistration(u);
+                    if (f) {
+                        session.setAttribute("succMsg", "Registration Successfully");
+                        response.sendRedirect("register.jsp");
+                    } else {
+                        session.setAttribute("failedMsg", "Something went wrong on server");
+                        response.sendRedirect("register.jsp");
+                    }
                 } else {
-                    session.setAttribute("failedMsg", "Something went wrong on server");
+                    session.setAttribute("failedMsg", "User Already Exist Try Another Email");
                     response.sendRedirect("register.jsp");
                 }
             } else {

@@ -38,4 +38,6 @@ public interface BookDao {
     public List<Books> getUserAllOldBooks(String email, String category);
     
     public boolean deleteUseOldBook(String email,String category, Integer bookId);
+    
+    public List<Books> getBookBySearch(String ch);
 }

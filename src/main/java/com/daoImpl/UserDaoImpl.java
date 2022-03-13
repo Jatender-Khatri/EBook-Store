@@ -145,4 +145,22 @@ public class UserDaoImpl implements UserDao {
         return f;
     }
 
+    @Override
+    public boolean checkEmail(String arg0) {
+        boolean f = true;
+        try {
+            String update = "select * from user where email=?";
+            PreparedStatement ps = con.prepareStatement(update);
+            ps.setString(1, arg0);
+            ResultSet set = ps.executeQuery();
+            while (set.next()) {
+                f = false;
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return f;
+    }
+
 }

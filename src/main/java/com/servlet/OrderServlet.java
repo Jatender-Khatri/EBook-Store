@@ -57,39 +57,44 @@ public class OrderServlet extends HttpServlet {
 
             // System.out.println(name + " , " + email + " , " + number + " , " + fullAddress + " , " + paymentType);
             CartDao cartDao = new CartDaoImpl(DBConnection.getConnection());
-            BookOrderDao bookOrderDao = new BookOrderDaoImpl(DBConnection.getConnection());
-            HttpSession session = request.getSession();
-            BookOrder bookOrder = null;
-            Random i = new Random();
-            ArrayList<BookOrder> orderList = new ArrayList<>();
             List<Cart> bList = cartDao.getBookByUserId(userId);
-            for (Cart c : bList) {
-                bookOrder = new BookOrder();
-                bookOrder.setOrderId("BOOK-ORD-00" + i.nextInt(1000));
-                bookOrder.setUserName(name);
-                bookOrder.setEmail(email);
-                bookOrder.setPhoneNumber(number);
-                bookOrder.setFullAddress(fullAddress);
-                bookOrder.setBookName(c.getBookName());
-                bookOrder.setAuthorName(c.getAuthor());
-                bookOrder.setPrice(c.getPrice() + "");
-                bookOrder.setPaymentType(paymentType);
-
-                orderList.add(bookOrder);
-
-            }
-            if ("noselect".equals(paymentType)) {
+            HttpSession session = request.getSession();
+            if (bList.isEmpty()) {
+                session.setAttribute("failedMsg", "Please Add Items");
                 response.sendRedirect("checkout.jsp");
-                session.setAttribute("failedMsg", "Choose Payment Method");
-
             } else {
-                boolean f = bookOrderDao.saveOrder(orderList);
-                if (f) {
-                    response.sendRedirect("checkout.jsp");
-                    session.setAttribute("failedMsg", "Your Order Failed");
-                } else {
-                    response.sendRedirect("order_success_page.jsp");
+                BookOrderDao bookOrderDao = new BookOrderDaoImpl(DBConnection.getConnection());
+                BookOrder bookOrder = null;
+                Random i = new Random();
+                ArrayList<BookOrder> orderList = new ArrayList<>();
 
+                for (Cart c : bList) {
+                    bookOrder = new BookOrder();
+                    bookOrder.setOrderId("BOOK-ORD-00" + i.nextInt(1000));
+                    bookOrder.setUserName(name);
+                    bookOrder.setEmail(email);
+                    bookOrder.setPhoneNumber(number);
+                    bookOrder.setFullAddress(fullAddress);
+                    bookOrder.setBookName(c.getBookName());
+                    bookOrder.setAuthorName(c.getAuthor());
+                    bookOrder.setPrice(c.getPrice() + "");
+                    bookOrder.setPaymentType(paymentType);
+
+                    orderList.add(bookOrder);
+
+                }
+                if ("noselect".equals(paymentType)) {
+                    response.sendRedirect("checkout.jsp");
+                    session.setAttribute("failedMsg", "Choose Payment Method");
+                } 
+                else {
+                    boolean f = bookOrderDao.saveOrder(orderList);
+                    if (f) {
+                        response.sendRedirect("checkout.jsp");
+                        session.setAttribute("failedMsg", "Your Order Failed");
+                    } else {
+                        response.sendRedirect("order_success_page.jsp");
+                    }
                 }
             }
         } catch (Exception e) {

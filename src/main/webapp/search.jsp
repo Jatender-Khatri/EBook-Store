@@ -99,8 +99,9 @@
             <h1 class="text-center">Recent Books</h1>
             <div class="row p-2">
                 <%
+                    String ch = request.getParameter("ch");
                     BookDao dao1 = new BookDaoImpl(DBConnection.getConnection());
-                    List<Books> list1 = dao1.getAllRecentBook();
+                    List<Books> list1 = dao1.getBookBySearch(ch);
                     for (Books book1 : list1) {
                 %>
                 <div class="col-md-3">

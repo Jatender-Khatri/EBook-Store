@@ -20,6 +20,7 @@ public class BookOrder {
     private String authorName;
     private String bookName;
     private String price;
+    private String orderTime;
 
     public BookOrder() {
     }
@@ -102,6 +103,14 @@ public class BookOrder {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
     
 }

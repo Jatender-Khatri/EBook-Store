@@ -134,7 +134,7 @@
                                 %>
 
                                 <a href="view_book_details.jsp?id=<%= book1.getBookId()%>" class="btn btn-success btn-sm ml-2">Details</a>
-                                <button class="btn btn-danger btn-sm ml-2">&#8360;. <%= book1.getPrice()%></button>>
+                                <button class="btn btn-danger btn-sm ml-2">&#8360;. <%= book1.getPrice()%></button>
                             </div>
 
                             <%

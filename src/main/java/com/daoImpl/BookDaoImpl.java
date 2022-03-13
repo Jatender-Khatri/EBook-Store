@@ -367,8 +367,7 @@ public class BookDaoImpl implements BookDao {
             ps.setString(2, arg1);
             ps.setInt(3, arg2);
             Integer roll = ps.executeUpdate();
-            if(roll==1)
-            {
+            if (roll == 1) {
                 b = true;
             }
         } catch (Exception e) {
@@ -376,6 +375,39 @@ public class BookDaoImpl implements BookDao {
             e.printStackTrace();
         }
         return b;
+    }
+
+    @Override
+    public List<Books> getBookBySearch(String arg0) {
+        List<Books> list = new ArrayList<>();
+        Books b = null;
+        try {
+            String query = "select * from books  where bName like ? or author like ? or bookCategory like ? and status=?";
+            PreparedStatement ps = con.prepareStatement(query);
+            ps.setString(1, "%" + arg0 + "%");
+            ps.setString(2, "%" + arg0 + "%");
+            ps.setString(3, "%" + arg0 + "%");
+            ps.setString(4, "Active");
+            ResultSet set = ps.executeQuery();
+
+            while (set.next()) {
+                b = new Books();
+                b.setBookId(set.getInt("id"));
+                b.setAuthor(set.getString("author"));
+                b.setBookCategory(set.getString("bookCategory"));
+                b.setBookName(set.getString("bName"));
+                b.setEmail(set.getString("email"));
+                b.setPhotoName(set.getString("photo"));
+                b.setPrice(set.getString("price"));
+                b.setStatus(set.getString("status"));
+                list.add(b);
+
+            }
+        } catch (Exception e) {
+            System.out.println("Error : " + e.getMessage());
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }
